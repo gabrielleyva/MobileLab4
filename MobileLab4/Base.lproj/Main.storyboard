@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" systemVersion="17A277" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="vD8-Hd-Yen">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -9,16 +12,82 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="MobileLab4" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qKB-s9-lZv">
+                                <rect key="frame" x="137" y="114" width="100" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="A0M-qq-Vdn"/>
+                                    <constraint firstAttribute="height" constant="40" id="pSk-8C-5Bg"/>
+                                </constraints>
+                                <state key="normal" title="Module A"/>
+                                <connections>
+                                    <segue destination="hxS-60-SMq" kind="show" id="Flp-tm-SBk"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gpg-WO-Yha">
+                                <rect key="frame" x="137" y="204" width="100" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="08Y-BO-cy2"/>
+                                    <constraint firstAttribute="width" constant="100" id="AEQ-2h-wyv"/>
+                                </constraints>
+                                <state key="normal" title="Module B"/>
+                                <connections>
+                                    <segue destination="W47-Tp-vOb" kind="show" id="ZbF-yX-Ozb"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Gpg-WO-Yha" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="OxX-8g-Ohe"/>
+                            <constraint firstItem="qKB-s9-lZv" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="50" id="PH6-Dd-muX"/>
+                            <constraint firstItem="Gpg-WO-Yha" firstAttribute="top" secondItem="qKB-s9-lZv" secondAttribute="bottom" constant="50" id="jcd-FA-L1w"/>
+                            <constraint firstItem="qKB-s9-lZv" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="oY3-tm-EDO"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <navigationItem key="navigationItem" id="8h1-3x-ZHl"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="476" y="132.68365817091455"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="lu8-px-tbx">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="vD8-Hd-Yen" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Mhk-he-qPu">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="EK9-QJ-0OI"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oYz-es-Wgd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-266" y="133"/>
+        </scene>
+        <!--ModuleB-->
+        <scene sceneID="7fN-XQ-MjR">
+            <objects>
+                <viewControllerPlaceholder storyboardName="ModuleB" id="W47-Tp-vOb" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wR2-qN-kiI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="476" y="843"/>
+        </scene>
+        <!--ModuleA-->
+        <scene sceneID="A8D-Gk-1fq">
+            <objects>
+                <viewControllerPlaceholder storyboardName="ModuleA" id="hxS-60-SMq" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="h1Q-yc-93H" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1166" y="133"/>
         </scene>
     </scenes>
 </document>
