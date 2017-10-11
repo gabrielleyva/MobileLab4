@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9B53B46B1F8E806E00034EE5 /* OpenCVBridge.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9B53B4681F8E806E00034EE5 /* OpenCVBridge.mm */; };
+		9B53B46C1F8E806E00034EE5 /* VideoAnalgesic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B53B46A1F8E806E00034EE5 /* VideoAnalgesic.swift */; };
+		9B53B46F1F8E882B00034EE5 /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B53B46E1F8E882A00034EE5 /* opencv2.framework */; };
+		9B53B4711F8E8A7B00034EE5 /* nose.xml in Resources */ = {isa = PBXBuildFile; fileRef = 9B53B4701F8E89FD00034EE5 /* nose.xml */; };
 		C013A7541F8D700B00D44BC7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C013A7531F8D700B00D44BC7 /* AppDelegate.swift */; };
 		C013A7561F8D700B00D44BC7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C013A7551F8D700B00D44BC7 /* ViewController.swift */; };
 		C013A7591F8D700B00D44BC7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C013A7571F8D700B00D44BC7 /* Main.storyboard */; };
@@ -14,7 +18,6 @@
 		C013A75E1F8D700B00D44BC7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C013A75C1F8D700B00D44BC7 /* LaunchScreen.storyboard */; };
 		C013A7691F8D700B00D44BC7 /* MobileLab4Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C013A7681F8D700B00D44BC7 /* MobileLab4Tests.swift */; };
 		C013A7741F8D700B00D44BC7 /* MobileLab4UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C013A7731F8D700B00D44BC7 /* MobileLab4UITests.swift */; };
-		C013A7891F8D704C00D44BC7 /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C013A7831F8D701C00D44BC7 /* opencv2.framework */; };
 		C013A78C1F8D72E000D44BC7 /* ModuleB.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C013A78A1F8D72E000D44BC7 /* ModuleB.storyboard */; };
 		C013A78E1F8D72F600D44BC7 /* ModuleA.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C013A78D1F8D72F600D44BC7 /* ModuleA.storyboard */; };
 		C013A7911F8D75F900D44BC7 /* ModuleA.swift in Sources */ = {isa = PBXBuildFile; fileRef = C013A7901F8D75F900D44BC7 /* ModuleA.swift */; };
@@ -39,6 +42,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9B53B4671F8E806D00034EE5 /* MobileLab4-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MobileLab4-Bridging-Header.h"; sourceTree = "<group>"; };
+		9B53B4681F8E806E00034EE5 /* OpenCVBridge.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = OpenCVBridge.mm; sourceTree = "<group>"; };
+		9B53B4691F8E806E00034EE5 /* OpenCVBridge.hh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = OpenCVBridge.hh; sourceTree = "<group>"; };
+		9B53B46A1F8E806E00034EE5 /* VideoAnalgesic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoAnalgesic.swift; sourceTree = "<group>"; };
+		9B53B46D1F8E80F600034EE5 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		9B53B46E1F8E882A00034EE5 /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = opencv2.framework; path = MobileLab4/ImageDSPUtils/opencv2.framework; sourceTree = "<group>"; };
+		9B53B4701F8E89FD00034EE5 /* nose.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = nose.xml; sourceTree = "<group>"; };
 		C013A7501F8D700B00D44BC7 /* MobileLab4.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MobileLab4.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C013A7531F8D700B00D44BC7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C013A7551F8D700B00D44BC7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -52,12 +62,6 @@
 		C013A76F1F8D700B00D44BC7 /* MobileLab4UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MobileLab4UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C013A7731F8D700B00D44BC7 /* MobileLab4UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileLab4UITests.swift; sourceTree = "<group>"; };
 		C013A7751F8D700B00D44BC7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C013A7821F8D701C00D44BC7 /* CoreImageOpenCVExample-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CoreImageOpenCVExample-Bridging-Header.h"; sourceTree = "<group>"; };
-		C013A7831F8D701C00D44BC7 /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = opencv2.framework; sourceTree = "<group>"; };
-		C013A7841F8D701C00D44BC7 /* OpenCVBridge.hh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = OpenCVBridge.hh; sourceTree = "<group>"; };
-		C013A7851F8D701C00D44BC7 /* OpenCVBridge.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = OpenCVBridge.mm; sourceTree = "<group>"; };
-		C013A7861F8D701C00D44BC7 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		C013A7871F8D701C00D44BC7 /* VideoAnalgesic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoAnalgesic.swift; sourceTree = "<group>"; };
 		C013A78B1F8D72E000D44BC7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = MobileLab4/Base.lproj/ModuleB.storyboard; sourceTree = "<group>"; };
 		C013A78D1F8D72F600D44BC7 /* ModuleA.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ModuleA.storyboard; sourceTree = "<group>"; };
 		C013A7901F8D75F900D44BC7 /* ModuleA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleA.swift; sourceTree = "<group>"; };
@@ -69,7 +73,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C013A7891F8D704C00D44BC7 /* opencv2.framework in Frameworks */,
+				9B53B46F1F8E882B00034EE5 /* opencv2.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -123,6 +127,7 @@
 				C013A75A1F8D700B00D44BC7 /* Assets.xcassets */,
 				C013A75C1F8D700B00D44BC7 /* LaunchScreen.storyboard */,
 				C013A75F1F8D700B00D44BC7 /* Info.plist */,
+				9B53B4701F8E89FD00034EE5 /* nose.xml */,
 				C013A7901F8D75F900D44BC7 /* ModuleA.swift */,
 				C013A7921F8D760300D44BC7 /* ModuleB.swift */,
 			);
@@ -150,12 +155,11 @@
 		C013A7811F8D701C00D44BC7 /* ImageDSPUtils */ = {
 			isa = PBXGroup;
 			children = (
-				C013A7821F8D701C00D44BC7 /* CoreImageOpenCVExample-Bridging-Header.h */,
-				C013A7831F8D701C00D44BC7 /* opencv2.framework */,
-				C013A7841F8D701C00D44BC7 /* OpenCVBridge.hh */,
-				C013A7851F8D701C00D44BC7 /* OpenCVBridge.mm */,
-				C013A7861F8D701C00D44BC7 /* README.md */,
-				C013A7871F8D701C00D44BC7 /* VideoAnalgesic.swift */,
+				9B53B46D1F8E80F600034EE5 /* PrefixHeader.pch */,
+				9B53B4691F8E806E00034EE5 /* OpenCVBridge.hh */,
+				9B53B4681F8E806E00034EE5 /* OpenCVBridge.mm */,
+				9B53B46A1F8E806E00034EE5 /* VideoAnalgesic.swift */,
+				9B53B4671F8E806D00034EE5 /* MobileLab4-Bridging-Header.h */,
 			);
 			path = ImageDSPUtils;
 			sourceTree = "<group>";
@@ -163,6 +167,7 @@
 		C013A7881F8D704C00D44BC7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9B53B46E1F8E882A00034EE5 /* opencv2.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -235,6 +240,7 @@
 				TargetAttributes = {
 					C013A74F1F8D700B00D44BC7 = {
 						CreatedOnToolsVersion = 9.0;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
 					C013A7631F8D700B00D44BC7 = {
@@ -274,6 +280,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B53B4711F8E8A7B00034EE5 /* nose.xml in Resources */,
 				C013A75E1F8D700B00D44BC7 /* LaunchScreen.storyboard in Resources */,
 				C013A78C1F8D72E000D44BC7 /* ModuleB.storyboard in Resources */,
 				C013A78E1F8D72F600D44BC7 /* ModuleA.storyboard in Resources */,
@@ -306,7 +313,9 @@
 				C013A7931F8D760300D44BC7 /* ModuleB.swift in Sources */,
 				C013A7561F8D700B00D44BC7 /* ViewController.swift in Sources */,
 				C013A7911F8D75F900D44BC7 /* ModuleA.swift in Sources */,
+				9B53B46C1F8E806E00034EE5 /* VideoAnalgesic.swift in Sources */,
 				C013A7541F8D700B00D44BC7 /* AppDelegate.swift in Sources */,
+				9B53B46B1F8E806E00034EE5 /* OpenCVBridge.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -480,16 +489,20 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 54AV24VF28;
+				DEVELOPMENT_TEAM = D6KDC363XA;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/MobileLab4/ImageDSPUtils",
 				);
 				INFOPLIST_FILE = MobileLab4/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.LeyvaPhadate.MobileLab4;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Phadate.MobileLab4;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MobileLab4/ImageDSPUtils/MobileLab4-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -499,16 +512,19 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 54AV24VF28;
+				DEVELOPMENT_TEAM = D6KDC363XA;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/MobileLab4/ImageDSPUtils",
 				);
 				INFOPLIST_FILE = MobileLab4/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.LeyvaPhadate.MobileLab4;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Phadate.MobileLab4;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MobileLab4/ImageDSPUtils/MobileLab4-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
