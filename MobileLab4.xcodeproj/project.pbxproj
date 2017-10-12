@@ -11,6 +11,7 @@
 		9B53B46C1F8E806E00034EE5 /* VideoAnalgesic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B53B46A1F8E806E00034EE5 /* VideoAnalgesic.swift */; };
 		9B53B46F1F8E882B00034EE5 /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B53B46E1F8E882A00034EE5 /* opencv2.framework */; };
 		9B53B4711F8E8A7B00034EE5 /* nose.xml in Resources */ = {isa = PBXBuildFile; fileRef = 9B53B4701F8E89FD00034EE5 /* nose.xml */; };
+		9B53B4741F8E908B00034EE5 /* ModBBridge.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9B53B4731F8E908B00034EE5 /* ModBBridge.mm */; };
 		C013A7541F8D700B00D44BC7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C013A7531F8D700B00D44BC7 /* AppDelegate.swift */; };
 		C013A7561F8D700B00D44BC7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C013A7551F8D700B00D44BC7 /* ViewController.swift */; };
 		C013A7591F8D700B00D44BC7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C013A7571F8D700B00D44BC7 /* Main.storyboard */; };
@@ -49,6 +50,8 @@
 		9B53B46D1F8E80F600034EE5 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		9B53B46E1F8E882A00034EE5 /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = opencv2.framework; path = MobileLab4/ImageDSPUtils/opencv2.framework; sourceTree = "<group>"; };
 		9B53B4701F8E89FD00034EE5 /* nose.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = nose.xml; sourceTree = "<group>"; };
+		9B53B4721F8E908B00034EE5 /* ModBBridge.hh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ModBBridge.hh; sourceTree = "<group>"; };
+		9B53B4731F8E908B00034EE5 /* ModBBridge.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ModBBridge.mm; sourceTree = "<group>"; };
 		C013A7501F8D700B00D44BC7 /* MobileLab4.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MobileLab4.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C013A7531F8D700B00D44BC7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C013A7551F8D700B00D44BC7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -160,6 +163,8 @@
 				9B53B4681F8E806E00034EE5 /* OpenCVBridge.mm */,
 				9B53B46A1F8E806E00034EE5 /* VideoAnalgesic.swift */,
 				9B53B4671F8E806D00034EE5 /* MobileLab4-Bridging-Header.h */,
+				9B53B4721F8E908B00034EE5 /* ModBBridge.hh */,
+				9B53B4731F8E908B00034EE5 /* ModBBridge.mm */,
 			);
 			path = ImageDSPUtils;
 			sourceTree = "<group>";
@@ -312,6 +317,7 @@
 			files = (
 				C013A7931F8D760300D44BC7 /* ModuleB.swift in Sources */,
 				C013A7561F8D700B00D44BC7 /* ViewController.swift in Sources */,
+				9B53B4741F8E908B00034EE5 /* ModBBridge.mm in Sources */,
 				C013A7911F8D75F900D44BC7 /* ModuleA.swift in Sources */,
 				9B53B46C1F8E806E00034EE5 /* VideoAnalgesic.swift in Sources */,
 				C013A7541F8D700B00D44BC7 /* AppDelegate.swift in Sources */,

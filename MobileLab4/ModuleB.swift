@@ -16,7 +16,7 @@ class ModuleB: UIViewController {
     var videoManager:VideoAnalgesic! = nil
     let pinchFilterIndex = 2
     var detector:CIDetector! = nil
-    let bridge = OpenCVBridge()
+    let bridge = ModBBridge()
     
     //MARK: Outlets in view
     @IBOutlet weak var flashSlider: UISlider!
