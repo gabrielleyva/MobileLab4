@@ -10,5 +10,6 @@
 
 @interface ModBBridge : OpenCVBridge
 -(void)processImage;
+@property (nonatomic) NSInteger processType;
 
 @end

@@ -23,7 +23,6 @@ using namespace cv;
 @implementation OpenCVBridge
 
 
-
 #pragma mark ===Write Your Code Here===
 // alternatively you can subclass this class and override the process image function
 
