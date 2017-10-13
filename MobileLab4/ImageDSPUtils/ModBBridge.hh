@@ -9,7 +9,7 @@
 #import "OpenCVBridge.hh"
 
 @interface ModBBridge : OpenCVBridge
--(void)processImage;
+-(float)processImage;
 @property (nonatomic) NSInteger processType;
 
 @end

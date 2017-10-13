@@ -4,3 +4,5 @@
 
 #import "OpenCVBridge.hh"
 #import "ModBBridge.hh"
+#import "FFTHelper.h"
+#import "PeakFinder.h"
