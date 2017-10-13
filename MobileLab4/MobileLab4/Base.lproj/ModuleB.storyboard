@@ -5,6 +5,7 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -17,69 +18,58 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stage: 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O5d-js-WqG">
-                                <rect key="frame" x="155" y="550" width="64" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Place finger on camera to calculate Heart Rate" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JGN-Dy-g3U">
+                                <rect key="frame" x="38" y="315" width="300" height="58"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="58" id="iKG-ao-QcP"/>
+                                    <constraint firstAttribute="width" constant="300" id="pWG-di-NUw"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Calculating Heart Rate ..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O5d-js-WqG">
+                                <rect key="frame" x="92" y="333" width="191" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="adz-kZ-jvp">
-                                <rect key="frame" x="255" y="579" width="104" height="30"/>
+                                <rect key="frame" x="255" y="617" width="104" height="30"/>
                                 <state key="normal" title="Toggle Camera"/>
                                 <connections>
                                     <action selector="switchCamera:" destination="SQv-vO-Doi" eventType="touchUpInside" id="hmZ-za-yeo"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="873-Nq-aj3">
-                                <rect key="frame" x="16" y="579" width="87" height="30"/>
+                                <rect key="frame" x="16" y="617" width="87" height="30"/>
                                 <state key="normal" title="Toggle Flash"/>
                                 <connections>
                                     <action selector="flash:" destination="SQv-vO-Doi" eventType="touchUpInside" id="Qta-3K-s88"/>
                                 </connections>
                             </button>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="L65-dw-hK0">
-                                <rect key="frame" x="14" y="617" width="347" height="31"/>
-                                <connections>
-                                    <action selector="setFlashLevel:" destination="SQv-vO-Doi" eventType="valueChanged" id="BOS-8s-aVT"/>
-                                </connections>
-                            </slider>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="L65-dw-hK0" firstAttribute="leading" secondItem="46y-Lw-QAi" secondAttribute="leading" constant="16" id="3aX-Oa-vNu"/>
-                            <constraint firstItem="adz-kZ-jvp" firstAttribute="trailing" secondItem="L65-dw-hK0" secondAttribute="trailing" id="DI5-lE-Jep"/>
+                            <constraint firstItem="adz-kZ-jvp" firstAttribute="trailing" secondItem="kml-kd-WcH" secondAttribute="trailingMargin" id="2Px-zk-sxn"/>
                             <constraint firstItem="873-Nq-aj3" firstAttribute="baseline" secondItem="adz-kZ-jvp" secondAttribute="baseline" id="JKV-vu-dp5"/>
-                            <constraint firstItem="L65-dw-hK0" firstAttribute="top" secondItem="adz-kZ-jvp" secondAttribute="bottom" constant="8" symbolic="YES" id="JPx-L5-qbZ"/>
-                            <constraint firstItem="L65-dw-hK0" firstAttribute="top" secondItem="O5d-js-WqG" secondAttribute="bottom" constant="46" id="JbN-B8-min"/>
-                            <constraint firstItem="O5d-js-WqG" firstAttribute="centerX" secondItem="L65-dw-hK0" secondAttribute="centerX" id="s9p-Yb-Wv7"/>
-                            <constraint firstItem="46y-Lw-QAi" firstAttribute="bottom" secondItem="L65-dw-hK0" secondAttribute="bottom" constant="20" id="sw0-iw-KVL"/>
-                            <constraint firstItem="46y-Lw-QAi" firstAttribute="trailing" secondItem="L65-dw-hK0" secondAttribute="trailing" constant="16" id="wNN-Tt-3SY"/>
-                            <constraint firstItem="873-Nq-aj3" firstAttribute="leading" secondItem="L65-dw-hK0" secondAttribute="leading" id="zCW-yE-91L"/>
+                            <constraint firstItem="873-Nq-aj3" firstAttribute="leading" secondItem="kml-kd-WcH" secondAttribute="leadingMargin" id="QlP-Ks-lMc"/>
+                            <constraint firstItem="JGN-Dy-g3U" firstAttribute="centerY" secondItem="46y-Lw-QAi" secondAttribute="centerY" id="Tpg-WU-7fw"/>
+                            <constraint firstItem="JGN-Dy-g3U" firstAttribute="centerX" secondItem="46y-Lw-QAi" secondAttribute="centerX" id="blu-nN-OR1"/>
+                            <constraint firstAttribute="bottom" secondItem="873-Nq-aj3" secondAttribute="bottom" constant="20" symbolic="YES" id="lLa-x9-mPa"/>
+                            <constraint firstItem="O5d-js-WqG" firstAttribute="centerY" secondItem="46y-Lw-QAi" secondAttribute="centerY" id="m6Z-n9-h6w"/>
+                            <constraint firstItem="O5d-js-WqG" firstAttribute="centerX" secondItem="46y-Lw-QAi" secondAttribute="centerX" id="qMY-Jn-3wJ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="46y-Lw-QAi"/>
-                        <connections>
-                            <outletCollection property="gestureRecognizers" destination="7Rx-zu-fDd" appends="YES" id="D7a-4o-tdY"/>
-                            <outletCollection property="gestureRecognizers" destination="ePp-p1-QqD" appends="YES" id="Two-mg-e5Z"/>
-                        </connections>
                     </view>
                     <connections>
-                        <outlet property="flashSlider" destination="L65-dw-hK0" id="uiV-IU-xRL"/>
+                        <outlet property="messageLabel" destination="JGN-Dy-g3U" id="oQG-AJ-YsG"/>
                         <outlet property="stageLabel" destination="O5d-js-WqG" id="Sfw-RZ-BFf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nio-2d-DLx" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <swipeGestureRecognizer direction="right" id="ePp-p1-QqD">
-                    <connections>
-                        <action selector="swipeRecognized:" destination="SQv-vO-Doi" id="rXO-yS-I8g"/>
-                    </connections>
-                </swipeGestureRecognizer>
-                <swipeGestureRecognizer direction="left" id="7Rx-zu-fDd">
-                    <connections>
-                        <action selector="swipeRecognized:" destination="SQv-vO-Doi" id="p4t-9t-nIY"/>
-                    </connections>
-                </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="476" y="843"/>
+            <point key="canvasLocation" x="476" y="842.42878560719646"/>
         </scene>
     </scenes>
 </document>

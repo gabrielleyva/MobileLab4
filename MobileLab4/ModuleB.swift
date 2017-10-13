@@ -27,13 +27,14 @@ class ModuleB: UIViewController {
     let fft = FFTHelper(fftSize: 2048)
     let finder = PeakFinder(frequencyResolution: samplingRate / Float(fftSize))
     //MARK: Outlets in view
-    @IBOutlet weak var flashSlider: UISlider!
+
     @IBOutlet weak var stageLabel: UILabel!
+    @IBOutlet weak var messageLabel: UILabel!
     
     //MARK: ViewController Hierarchy
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.stageLabel.isHidden = true
         self.view.backgroundColor = nil
         //self.setupFilters()
         
@@ -72,12 +73,22 @@ class ModuleB: UIViewController {
         let f = self.bridge.processImage()
         retImage = self.bridge.getImageComposite() // get back opencv processed part of the image (overlayed on original)
         self.delay+=1
-        if (f < 50 && delay > 60){
+        if (f < 50){
             _ = self.videoManager.turnOnFlashwithLevel(1.0)
+            DispatchQueue.main.async {
+                self.messageLabel.isHidden = true
+                self.stageLabel.isHidden = false
+            }
             self.delay = 0
         }
-        if (f > 50 && f < 200){
+        if (f > 100 && f < 200){
             self.videoManager.turnOffFlash()
+            DispatchQueue.main.async {
+                self.messageLabel.isHidden = false
+                self.stageLabel.isHidden = true
+                self.stageLabel.text = "Calculating Heart Rate..."
+                self.array = Array(repeating: Float(0), count: ModuleB.buffersize)
+            }
             self.delay = 0
         }
         if (f > 220 && delay > 60){
@@ -224,12 +235,7 @@ class ModuleB: UIViewController {
     
     //MARK: Convenience Methods for UI Flash and Camera Toggle
     @IBAction func flash(_ sender: AnyObject) {
-        if(self.videoManager.toggleFlash()){
-            self.flashSlider.value = 1.0
-        }
-        else{
-            self.flashSlider.value = 0.0
-        }
+        _ = self.videoManager.toggleFlash()
     }
     
     @IBAction func switchCamera(_ sender: AnyObject) {
@@ -248,14 +254,6 @@ class ModuleB: UIViewController {
         }
     }
     
-    @IBAction func setFlashLevel(_ sender: UISlider) {
-        if(sender.value>0.0){
-            self.videoManager.turnOnFlashwithLevel(sender.value)
-        }
-        else if(sender.value==0.0){
-            self.videoManager.turnOffFlash()
-        }
-    }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)

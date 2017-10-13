@@ -31,7 +31,7 @@ using namespace cv;
     cvtColor(image, image_copy, CV_BGRA2RGB); // get rid of alpha for processing
     avgPixelIntensity = cv::mean( image_copy );
     sprintf(text,"Avg. B: %.3f, G: %.3f, R: %.3f", avgPixelIntensity.val[0],avgPixelIntensity.val[1],avgPixelIntensity.val[2]);
-    cv::putText(image, text, cv::Point(10, 100), FONT_HERSHEY_PLAIN, 0.75, Scalar::all(255), 1, 2);
+    cv::putText(image, text, cv::Point(58, 100), FONT_HERSHEY_PLAIN, 0.75, Scalar::all(255), 1, 2);
     
     
     
