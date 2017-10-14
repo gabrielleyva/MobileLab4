@@ -246,7 +246,7 @@ using namespace cv;
             //image already in the correct color space
             break;
         }
-            
+                        
         default:
             break;
             
