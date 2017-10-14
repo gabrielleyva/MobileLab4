@@ -14,6 +14,9 @@
 		9B53B4741F8E908B00034EE5 /* ModBBridge.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9B53B4731F8E908B00034EE5 /* ModBBridge.mm */; };
 		9B5CD6B01F90AE8000054665 /* FFTHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B5CD6AE1F90AE7F00054665 /* FFTHelper.m */; };
 		9B5CD6B31F91013A00054665 /* PeakFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B5CD6B21F91013A00054665 /* PeakFinder.m */; };
+		9B68B67A1F927651001D9977 /* Buffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B68B6791F927651001D9977 /* Buffer.swift */; };
+		9B68B67B1F927C0A001D9977 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BB4D0E51F925E0B00461125 /* Charts.framework */; };
+		9B68B67C1F927C0A001D9977 /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9BB4D0E51F925E0B00461125 /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C013A7541F8D700B00D44BC7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C013A7531F8D700B00D44BC7 /* AppDelegate.swift */; };
 		C013A7561F8D700B00D44BC7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C013A7551F8D700B00D44BC7 /* ViewController.swift */; };
 		C013A7591F8D700B00D44BC7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C013A7571F8D700B00D44BC7 /* Main.storyboard */; };
@@ -28,6 +31,27 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		9B68B67D1F927C0A001D9977 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9BB4D0DF1F925E0B00461125 /* Charts.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = A58A4ED274A941CA248EA921;
+			remoteInfo = Charts;
+		};
+		9BB4D0E41F925E0B00461125 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9BB4D0DF1F925E0B00461125 /* Charts.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 65AD9E95D9ED4DC0BD73A743;
+			remoteInfo = Charts;
+		};
+		9BB4D0E61F925E0B00461125 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9BB4D0DF1F925E0B00461125 /* Charts.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 1CBBC58C6CE1EBEE9852CE41;
+			remoteInfo = ChartsTests;
+		};
 		C013A7651F8D700B00D44BC7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = C013A7481F8D700B00D44BC7 /* Project object */;
@@ -44,6 +68,20 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		9B68B67F1F927C0A001D9977 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				9B68B67C1F927C0A001D9977 /* Charts.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		9B53B4671F8E806D00034EE5 /* MobileLab4-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MobileLab4-Bridging-Header.h"; sourceTree = "<group>"; };
 		9B53B4681F8E806E00034EE5 /* OpenCVBridge.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = OpenCVBridge.mm; sourceTree = "<group>"; };
@@ -58,6 +96,8 @@
 		9B5CD6AF1F90AE8000054665 /* FFTHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FFTHelper.h; sourceTree = "<group>"; };
 		9B5CD6B11F91013A00054665 /* PeakFinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PeakFinder.h; sourceTree = "<group>"; };
 		9B5CD6B21F91013A00054665 /* PeakFinder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PeakFinder.m; sourceTree = "<group>"; };
+		9B68B6791F927651001D9977 /* Buffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buffer.swift; sourceTree = "<group>"; };
+		9BB4D0DF1F925E0B00461125 /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = "../Charts-master/Charts.xcodeproj"; sourceTree = "<group>"; };
 		C013A7501F8D700B00D44BC7 /* MobileLab4.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MobileLab4.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C013A7531F8D700B00D44BC7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C013A7551F8D700B00D44BC7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -83,6 +123,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9B53B46F1F8E882B00034EE5 /* opencv2.framework in Frameworks */,
+				9B68B67B1F927C0A001D9977 /* Charts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -103,9 +144,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9BB4D0E01F925E0B00461125 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9BB4D0E51F925E0B00461125 /* Charts.framework */,
+				9BB4D0E71F925E0B00461125 /* ChartsTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		C013A7471F8D700B00D44BC7 = {
 			isa = PBXGroup;
 			children = (
+				9BB4D0DF1F925E0B00461125 /* Charts.xcodeproj */,
 				C013A7521F8D700B00D44BC7 /* MobileLab4 */,
 				C013A7671F8D700B00D44BC7 /* MobileLab4Tests */,
 				C013A7721F8D700B00D44BC7 /* MobileLab4UITests */,
@@ -139,6 +190,7 @@
 				9B53B4701F8E89FD00034EE5 /* nose.xml */,
 				C013A7901F8D75F900D44BC7 /* ModuleA.swift */,
 				C013A7921F8D760300D44BC7 /* ModuleB.swift */,
+				9B68B6791F927651001D9977 /* Buffer.swift */,
 			);
 			path = MobileLab4;
 			sourceTree = "<group>";
@@ -197,10 +249,12 @@
 				C013A74C1F8D700B00D44BC7 /* Sources */,
 				C013A74D1F8D700B00D44BC7 /* Frameworks */,
 				C013A74E1F8D700B00D44BC7 /* Resources */,
+				9B68B67F1F927C0A001D9977 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				9B68B67E1F927C0A001D9977 /* PBXTargetDependency */,
 			);
 			name = MobileLab4;
 			productName = MobileLab4;
@@ -281,6 +335,12 @@
 			mainGroup = C013A7471F8D700B00D44BC7;
 			productRefGroup = C013A7511F8D700B00D44BC7 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 9BB4D0E01F925E0B00461125 /* Products */;
+					ProjectRef = 9BB4D0DF1F925E0B00461125 /* Charts.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				C013A74F1F8D700B00D44BC7 /* MobileLab4 */,
@@ -289,6 +349,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		9BB4D0E51F925E0B00461125 /* Charts.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Charts.framework;
+			remoteRef = 9BB4D0E41F925E0B00461125 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9BB4D0E71F925E0B00461125 /* ChartsTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = ChartsTests.xctest;
+			remoteRef = 9BB4D0E61F925E0B00461125 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		C013A74E1F8D700B00D44BC7 /* Resources */ = {
@@ -328,6 +405,7 @@
 				C013A7931F8D760300D44BC7 /* ModuleB.swift in Sources */,
 				C013A7561F8D700B00D44BC7 /* ViewController.swift in Sources */,
 				9B5CD6B31F91013A00054665 /* PeakFinder.m in Sources */,
+				9B68B67A1F927651001D9977 /* Buffer.swift in Sources */,
 				9B53B4741F8E908B00034EE5 /* ModBBridge.mm in Sources */,
 				C013A7911F8D75F900D44BC7 /* ModuleA.swift in Sources */,
 				9B5CD6B01F90AE8000054665 /* FFTHelper.m in Sources */,
@@ -356,6 +434,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		9B68B67E1F927C0A001D9977 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Charts;
+			targetProxy = 9B68B67D1F927C0A001D9977 /* PBXContainerItemProxy */;
+		};
 		C013A7661F8D700B00D44BC7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = C013A74F1F8D700B00D44BC7 /* MobileLab4 */;
@@ -506,6 +589,7 @@
 		C013A7791F8D700B00D44BC7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -529,6 +613,7 @@
 		C013A77A1F8D700B00D44BC7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;

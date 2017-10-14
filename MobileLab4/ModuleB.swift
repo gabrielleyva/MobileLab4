@@ -8,230 +8,148 @@
 
 import Foundation
 import UIKit
+import Charts
 
 class ModuleB: UIViewController {
     
     //MARK: Class Properties
     static let buffersize = 2048
+    static let chartDuration  = 300
     static let samplingRate = Float(30.0*60)
+    static let fftSize = 2048
     var filters : [CIFilter]! = nil
     var videoManager:VideoAnalgesic! = nil
     let pinchFilterIndex = 2
     var detector:CIDetector! = nil
     let bridge = ModBBridge()
-    var array = Array(repeating: Float(0), count: buffersize)
     var arrayMag = Array(repeating: Float(0), count: Int(buffersize/2))
-    var count = 0
-    var delay = 0
-    static let fftSize = 2048
+    var dataBuffer = Buffer(with: chartDuration)
+    var frame = 0
+    var flashEnabled = false
     let fft = FFTHelper(fftSize: 2048)
     let finder = PeakFinder(frequencyResolution: samplingRate / Float(fftSize))
     //MARK: Outlets in view
 
-    @IBOutlet weak var stageLabel: UILabel!
+    @IBOutlet weak var bpmLabel: UILabel!
     @IBOutlet weak var messageLabel: UILabel!
+    @IBOutlet weak var lineChart: LineChartView!
     
     //MARK: ViewController Hierarchy
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.stageLabel.isHidden = true
+        self.bpmLabel.isHidden = true
         self.view.backgroundColor = nil
         //self.setupFilters()
         
         //self.bridge.loadHaarCascade(withFilename: "nose")
         self.videoManager = VideoAnalgesic.sharedInstance
-        self.videoManager.setCameraPosition(position: AVCaptureDevice.Position.back
-        )
-        
-        // create dictionary for face detection
-        // HINT: you need to manipulate these proerties for better face detection efficiency
-        let optsDetector = [CIDetectorAccuracy:CIDetectorAccuracyHigh,CIDetectorTracking:true] as [String : Any]
-        
-        // setup a face detector in swift
-        self.detector = CIDetector(ofType: CIDetectorTypeFace,
-                                   context: self.videoManager.getCIContext(), // perform on the GPU is possible
-            options: (optsDetector as [String : AnyObject]))
-        
+        self.videoManager.setCameraPosition(position: AVCaptureDevice.Position.back)
         self.videoManager.setProcessingBlock(newProcessBlock: self.processImageFinger)
         
         if !videoManager.isRunning{
             videoManager.start()
             videoManager.setFPS(desiredFrameRate: 30)
         }
+       
         
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        self.videoManager.stop()
+    }
+    
     func processImageFinger(inputImage: CIImage) -> CIImage {
-        
-        
+ 
         var retImage = inputImage
         let bounds = inputImage.extent
         self.bridge.setTransforms(self.videoManager.transform)
         
-        //print(bounds)
         self.bridge.setImage(retImage, withBounds: bounds,andContext: self.videoManager.getCIContext())
-        let f = self.bridge.processImage()
+        let redIntensity = self.bridge.processImage()
         retImage = self.bridge.getImageComposite() // get back opencv processed part of the image (overlayed on original)
-        self.delay+=1
-        if (f < 50){
+        
+
+        // Check low light and turn on flash after 1 sec
+        if (redIntensity < 80 && frame > 30 && !self.flashEnabled){
             _ = self.videoManager.turnOnFlashwithLevel(1.0)
+            self.flashEnabled = true
             DispatchQueue.main.async {
                 self.messageLabel.isHidden = true
-                self.stageLabel.isHidden = false
+                self.bpmLabel.isHidden = false
             }
-            self.delay = 0
+            self.frame = 0
         }
-        if (f > 100 && f < 200){
+
+        // Check finger moved and turn off flash light in 1
+        if (redIntensity > 100 && redIntensity < 200 && frame > 30 && self.flashEnabled){
             self.videoManager.turnOffFlash()
+            self.flashEnabled = false
             DispatchQueue.main.async {
                 self.messageLabel.isHidden = false
-                self.stageLabel.isHidden = true
-                self.stageLabel.text = "Calculating Heart Rate..."
-                self.array = Array(repeating: Float(0), count: ModuleB.buffersize)
+                self.bpmLabel.isHidden = true
+                self.bpmLabel.text = "Calculating Heart Rate..."
             }
-            self.delay = 0
+            self.frame = 0
+            self.dataBuffer.reset()
         }
-        if (f > 220 && delay > 60){
-            self.array[self.count] = f
-            self.count += 1
-            if (self.count  == 300 ){
-                self.count = 0
-            }
-            if (delay >= 100){
-                delay = 60
-            }
+
+        // Check high red and wait 2 sec before red sattles
+        if (redIntensity > 220 && frame > 60 && flashEnabled){
+            self.dataBuffer.add(point: redIntensity)
         }
+
+        // Every 3 seconds try to get fft
+        let size = dataBuffer.getBufferCount()
+        if (self.frame % (30*3) == 0 && size  != 0) {
             
-        if (count % (30*3) == 0) {
-            fft!.performForwardFFT(withData: &array, andCopydBMagnitudeToBuffer: &arrayMag)
-            
-            var peaks = finder!.getFundamentalPeaks(fromBuffer: &arrayMag, withLength: UInt(Int(ModuleB.buffersize/2)), usingWindowSize: 10, andPeakMagnitudeMinimum: 10, aboveFrequency: 50.0)
-            
+            let data = self.dataBuffer.getData()
+            let pad_size = ModuleB.buffersize - data.count
+            var zeroPaddedData = data + Array(repeating: Float(0), count: pad_size)
+
+            fft!.performForwardFFT(withData: &zeroPaddedData, andCopydBMagnitudeToBuffer: &arrayMag)
+
+            var peaks = finder!.getFundamentalPeaks(fromBuffer: &arrayMag, withLength: UInt(Int(ModuleB.buffersize/2)),
+                                                    usingWindowSize: 10, andPeakMagnitudeMinimum: 10, aboveFrequency: 50.0)
+
             if (peaks != nil){
                 if peaks!.count > 0 {
                     let peaks2:[Peak] = peaks as! [Peak]
                     let peak1: Peak = peaks![0] as! Peak
                     let res = Float(ModuleB.samplingRate) / Float(ModuleB.fftSize)
-                    let max = arrayMag[0...300].max()!
-                    
+
                     for i in 0..<peaks!.count {
                         print(peaks2[i].frequency)
                     }
-                    
-                    print("Max value: ",max)
+
                     print("Freq resolution",res)
-                    print("Heart rate is ",peak1.frequency, " Count: ", self.count)
-                    
-                    
+                    print("Heart rate is ",peak1.frequency, " Frame: ", self.frame)
+
+                    if (peak1.frequency < 250 && peak1.frequency > 40){
                         DispatchQueue.main.async {
-                            if (peak1.frequency < 210){
-                            self.stageLabel.text = String(Int(peak1.frequency))+" BPM"
-                            }
-//                            else{
-//                                self.stageLabel.text = "Calculating Heart Rate..."
-//                            }
+                            self.bpmLabel.text = String(Int(peak1.frequency))+" BPM"
+                        }
                     }
                 }
-                
-                //print("Band width: ", arrayMag)
             }
-                
-            
-            
         }
         
-        //print(self.array)
+        // Update chart every 0.5 sec
+        if(self.frame % 15 == 0 && self.flashEnabled){
+            DispatchQueue.main.async {
+                self.updateChart()
+            }
+        }
+        self.frame += 1
+        if self.frame >= ModuleB.chartDuration+30{ self.frame = 30 } // refresh frame every 10 sec
         return retImage
         
     }
     
     //MARK: Process image output
     func processImage(inputImage:CIImage) -> CIImage{
-        
-        // detect faces
-        let f = getFaces(img: inputImage)
-        
-        
-        // if no faces, just return original image
-        
-        if f.count == 0 { return inputImage }
-        
-        var retImage = inputImage
-        
-        // if you just want to process on separate queue use this code
-        // this is a NON BLOCKING CALL, but any changes to the image in OpenCV cannot be displayed real time
-        //        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) { () -> Void in
-        //            self.bridge.setImage(retImage, withBounds: retImage.extent, andContext: self.videoManager.getCIContext())
-        //            self.bridge.processImage()
-        //        }
-        
-        // use this code if you are using OpenCV and want to overwrite the displayed image via OpenCv
-        // this is a BLOCKING CALL
-        //        self.bridge.setTransforms(self.videoManager.transform)
-        //        self.bridge.setImage(retImage, withBounds: retImage.extent, andContext: self.videoManager.getCIContext())
-        //        self.bridge.processImage()
-        //        retImage = self.bridge.getImage()
-        
-        //HINT: you can also send in the bounds of the face to ONLY process the face in OpenCV
-        // or any bounds to only process a certain bounding region in OpenCV
-        
-        
-        self.bridge.setTransforms(self.videoManager.transform)
-        self.bridge.setImage(retImage,
-                             withBounds: f[0].bounds, // the first face bounds
-            andContext: self.videoManager.getCIContext())
-        
-        self.bridge.processImage()
-        retImage = self.bridge.getImageComposite() // get back opencv processed part of the image (overlayed on original)
-        
-        return retImage
+        return inputImage
     }
-    
-    //MARK: Setup filtering
-    //    func setupFilters(){
-    //        filters = []
-    //
-    //        let filterPinch = CIFilter(name:"CIBumpDistortion")!
-    //        filterPinch.setValue(-0.5, forKey: "inputScale")
-    //        filterPinch.setValue(75, forKey: "inputRadius")
-    //        filters.append(filterPinch)
-    //
-    //    }
-    
-    //MARK: Apply filters and apply feature detectors
-    //    func applyFiltersToFaces(inputImage:CIImage,features:[CIFaceFeature])->CIImage{
-    //        var retImage = inputImage
-    //        var filterCenter = CGPoint()
-    //
-    //        for f in features {
-    //            //set where to apply filter
-    //            filterCenter.x = f.bounds.midX
-    //            filterCenter.y = f.bounds.midY
-    //
-    //            //do for each filter (assumes all filters have property, "inputCenter")
-    //            for filt in filters{
-    //                filt.setValue(retImage, forKey: kCIInputImageKey)
-    //                filt.setValue(CIVector(cgPoint: filterCenter), forKey: "inputCenter")
-    //                // could also manipualte the radius of the filter based on face size!
-    //                retImage = filt.outputImage!
-    //            }
-    //        }
-    //        return retImage
-    //    }
-    
-    func getFaces(img:CIImage) -> [CIFaceFeature]{
-        // this ungodly mess makes sure the image is the correct orientation
-        //let optsFace = [CIDetectorImageOrientation:self.videoManager.getImageOrientationFromUIOrientation(UIApplication.sharedApplication().statusBarOrientation)]
-        let optsFace = [CIDetectorImageOrientation:self.videoManager.ciOrientation]
-        // get Face Features
-        return self.detector.features(in: img, options: optsFace) as! [CIFaceFeature]
-        
-        
-    }
-    
-    
-    
-    
     
     //MARK: Convenience Methods for UI Flash and Camera Toggle
     @IBAction func flash(_ sender: AnyObject) {
@@ -254,14 +172,28 @@ class ModuleB: UIViewController {
         }
     }
     
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(true)
-        if videoManager.isRunning{
-            self.videoManager.stop()
+    //MARK: Linechart methods
+    func updateChart(){
+        
+        var lineChartEntry = [ChartDataEntry]()
+        let data = self.dataBuffer.getData()
+        for i in 0..<data.count{
+            let value = ChartDataEntry(x: Double(i), y: Double(data[i]))
+            lineChartEntry.append(value)
         }
+    
+        let line1 = LineChartDataSet(values: lineChartEntry, label: "Heart Rate")
+        line1.colors = [NSUIColor.blue]
+        line1.drawCirclesEnabled = false
+        let lineData = LineChartData()
+        lineData.addDataSet(line1)
+        self.lineChart.data = lineData
+        self.lineChart.backgroundColor = UIColor.white
+        
     }
     
     
+    
+
     
 }

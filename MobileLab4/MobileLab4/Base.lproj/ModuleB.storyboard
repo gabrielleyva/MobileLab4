@@ -5,7 +5,6 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,53 +17,64 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Place finger on camera to calculate Heart Rate" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JGN-Dy-g3U">
-                                <rect key="frame" x="38" y="315" width="300" height="58"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="58" id="iKG-ao-QcP"/>
-                                    <constraint firstAttribute="width" constant="300" id="pWG-di-NUw"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Calculating Heart Rate ..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O5d-js-WqG">
-                                <rect key="frame" x="92" y="333" width="191" height="21"/>
+                                <rect key="frame" x="92" y="286" width="191" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="adz-kZ-jvp">
-                                <rect key="frame" x="255" y="617" width="104" height="30"/>
+                                <rect key="frame" x="255" y="501" width="104" height="30"/>
                                 <state key="normal" title="Toggle Camera"/>
                                 <connections>
                                     <action selector="switchCamera:" destination="SQv-vO-Doi" eventType="touchUpInside" id="hmZ-za-yeo"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="873-Nq-aj3">
-                                <rect key="frame" x="16" y="617" width="87" height="30"/>
+                                <rect key="frame" x="16" y="501" width="87" height="30"/>
                                 <state key="normal" title="Toggle Flash"/>
                                 <connections>
                                     <action selector="flash:" destination="SQv-vO-Doi" eventType="touchUpInside" id="Qta-3K-s88"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8da-dK-Gdj" customClass="LineChartView" customModule="Charts">
+                                <rect key="frame" x="0.0" y="539" width="375" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="uNQ-HG-wEv"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Place finger on camera to calculate Heart Rate" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JGN-Dy-g3U">
+                                <rect key="frame" x="38" y="267" width="299" height="58"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="58" id="RJk-WQ-TBW"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="adz-kZ-jvp" firstAttribute="trailing" secondItem="kml-kd-WcH" secondAttribute="trailingMargin" id="2Px-zk-sxn"/>
-                            <constraint firstItem="873-Nq-aj3" firstAttribute="baseline" secondItem="adz-kZ-jvp" secondAttribute="baseline" id="JKV-vu-dp5"/>
-                            <constraint firstItem="873-Nq-aj3" firstAttribute="leading" secondItem="kml-kd-WcH" secondAttribute="leadingMargin" id="QlP-Ks-lMc"/>
-                            <constraint firstItem="JGN-Dy-g3U" firstAttribute="centerY" secondItem="46y-Lw-QAi" secondAttribute="centerY" id="Tpg-WU-7fw"/>
-                            <constraint firstItem="JGN-Dy-g3U" firstAttribute="centerX" secondItem="46y-Lw-QAi" secondAttribute="centerX" id="blu-nN-OR1"/>
-                            <constraint firstAttribute="bottom" secondItem="873-Nq-aj3" secondAttribute="bottom" constant="20" symbolic="YES" id="lLa-x9-mPa"/>
-                            <constraint firstItem="O5d-js-WqG" firstAttribute="centerY" secondItem="46y-Lw-QAi" secondAttribute="centerY" id="m6Z-n9-h6w"/>
-                            <constraint firstItem="O5d-js-WqG" firstAttribute="centerX" secondItem="46y-Lw-QAi" secondAttribute="centerX" id="qMY-Jn-3wJ"/>
+                            <constraint firstItem="JGN-Dy-g3U" firstAttribute="centerX" secondItem="O5d-js-WqG" secondAttribute="centerX" id="1iI-AH-NHV"/>
+                            <constraint firstItem="8da-dK-Gdj" firstAttribute="leading" secondItem="46y-Lw-QAi" secondAttribute="leading" id="6aO-LN-SXl"/>
+                            <constraint firstItem="46y-Lw-QAi" firstAttribute="trailing" secondItem="adz-kZ-jvp" secondAttribute="trailing" constant="16" id="JS6-dY-ZGE"/>
+                            <constraint firstItem="O5d-js-WqG" firstAttribute="centerX" secondItem="8da-dK-Gdj" secondAttribute="centerX" id="UYk-GS-Hd8"/>
+                            <constraint firstItem="8da-dK-Gdj" firstAttribute="trailing" secondItem="46y-Lw-QAi" secondAttribute="trailing" id="XAE-5a-c0m"/>
+                            <constraint firstItem="8da-dK-Gdj" firstAttribute="top" secondItem="873-Nq-aj3" secondAttribute="bottom" constant="8" id="ZLu-2a-tgy"/>
+                            <constraint firstItem="873-Nq-aj3" firstAttribute="leading" secondItem="46y-Lw-QAi" secondAttribute="leading" constant="16" id="egL-aW-Vqj"/>
+                            <constraint firstItem="JGN-Dy-g3U" firstAttribute="leading" secondItem="46y-Lw-QAi" secondAttribute="leading" constant="38" id="gUL-PR-ezz"/>
+                            <constraint firstItem="8da-dK-Gdj" firstAttribute="top" secondItem="adz-kZ-jvp" secondAttribute="bottom" constant="8" id="oCh-az-3wH"/>
+                            <constraint firstItem="8da-dK-Gdj" firstAttribute="bottom" secondItem="46y-Lw-QAi" secondAttribute="bottom" id="pWk-Af-U6i"/>
+                            <constraint firstItem="JGN-Dy-g3U" firstAttribute="centerY" secondItem="O5d-js-WqG" secondAttribute="centerY" id="yfN-O3-1LG"/>
+                            <constraint firstItem="JGN-Dy-g3U" firstAttribute="top" secondItem="46y-Lw-QAi" secondAttribute="top" constant="247" id="zTj-Gk-k1B"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="46y-Lw-QAi"/>
                     </view>
                     <connections>
+                        <outlet property="bpmLabel" destination="O5d-js-WqG" id="Sfw-RZ-BFf"/>
+                        <outlet property="lineChart" destination="8da-dK-Gdj" id="Ueb-SI-jg5"/>
                         <outlet property="messageLabel" destination="JGN-Dy-g3U" id="oQG-AJ-YsG"/>
-                        <outlet property="stageLabel" destination="O5d-js-WqG" id="Sfw-RZ-BFf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nio-2d-DLx" userLabel="First Responder" sceneMemberID="firstResponder"/>
