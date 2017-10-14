@@ -66,6 +66,10 @@ class VideoAnalgesic: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate, AV
         }
     }
     
+    func getCameraPosition()-> AVCaptureDevice.Position{
+        return self.devicePosition;
+    }
+    
     // for setting the camera we should use
     func toggleCameraPosition(){
         // AVCaptureDevicePosition.Back
@@ -464,7 +468,10 @@ class VideoAnalgesic: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate, AV
     }
     
     func setFPS(desiredFrameRate:Double){
+        print("Inside set fps")
+
         if let device = self.videoDevice{
+
             do {
                 try device.lockForConfiguration()
             } catch _ {
