@@ -26,7 +26,7 @@ class ModuleB: UIViewController {
     var dataBuffer = Buffer(with: chartDuration)
     var frame = 0
     var flashEnabled = false
-    let fft = FFTHelper(fftSize: 2048)
+    let fft = FFTHelper(fftSize: 2048, andWindow: WindowTypeHamming)
     let finder = PeakFinder(frequencyResolution: samplingRate / Float(fftSize))
     //MARK: Outlets in view
 
@@ -50,7 +50,7 @@ class ModuleB: UIViewController {
             videoManager.start()
             videoManager.setFPS(desiredFrameRate: 30)
         }
-       
+       self.setupLinechart()
         
     }
     
@@ -92,6 +92,7 @@ class ModuleB: UIViewController {
             }
             self.frame = 0
             self.dataBuffer.reset()
+            self.lineChart.data = nil
         }
 
         // Check high red and wait 2 sec before red sattles
@@ -110,26 +111,22 @@ class ModuleB: UIViewController {
             fft!.performForwardFFT(withData: &zeroPaddedData, andCopydBMagnitudeToBuffer: &arrayMag)
 
             var peaks = finder!.getFundamentalPeaks(fromBuffer: &arrayMag, withLength: UInt(Int(ModuleB.buffersize/2)),
-                                                    usingWindowSize: 10, andPeakMagnitudeMinimum: 10, aboveFrequency: 50.0)
+                                                    usingWindowSize: 15, andPeakMagnitudeMinimum: 20, aboveFrequency: 60.0)
 
             if (peaks != nil){
                 if peaks!.count > 0 {
-                    let peaks2:[Peak] = peaks as! [Peak]
                     let peak1: Peak = peaks![0] as! Peak
                     let res = Float(ModuleB.samplingRate) / Float(ModuleB.fftSize)
-
-                    for i in 0..<peaks!.count {
-                        print(peaks2[i].frequency)
-                    }
-
-                    print("Freq resolution",res)
-                    print("Heart rate is ",peak1.frequency, " Frame: ", self.frame)
-
-                    if (peak1.frequency < 250 && peak1.frequency > 40){
+                    if peak1.frequency < 200{
                         DispatchQueue.main.async {
                             self.bpmLabel.text = String(Int(peak1.frequency))+" BPM"
                         }
                     }
+                    
+                   // print(arrayMag.max())
+                    print("Freq resolution",res)
+                    print("Heart rate is ",peak1.frequency, " Frame: ", self.frame)
+
                 }
             }
         }
@@ -181,15 +178,29 @@ class ModuleB: UIViewController {
             let value = ChartDataEntry(x: Double(i), y: Double(data[i]))
             lineChartEntry.append(value)
         }
-    
-        let line1 = LineChartDataSet(values: lineChartEntry, label: "Heart Rate")
-        line1.colors = [NSUIColor.blue]
+        
+        let line1 = LineChartDataSet(values: lineChartEntry, label: nil)
+        line1.colors = [NSUIColor.red]
         line1.drawCirclesEnabled = false
+        line1.drawValuesEnabled = false
         let lineData = LineChartData()
         lineData.addDataSet(line1)
         self.lineChart.data = lineData
-        self.lineChart.backgroundColor = UIColor.white
-        
+    }
+    
+    func setupLinechart() {
+        self.lineChart.backgroundColor = UIColor.black
+        self.lineChart.leftAxis.drawAxisLineEnabled = false
+        self.lineChart.rightAxis.drawAxisLineEnabled = false
+        self.lineChart.xAxis.drawAxisLineEnabled = false
+        self.lineChart.noDataTextColor = UIColor.white
+        self.lineChart.noDataText = "Waiting to get pulse data"
+        self.lineChart.xAxis.drawGridLinesEnabled = false
+        self.lineChart.rightAxis.drawGridLinesEnabled = false
+        self.lineChart.leftAxis.drawGridLinesEnabled = false
+        self.lineChart.legend.enabled = false
+        self.lineChart.minOffset = 0
+        self.lineChart.drawBordersEnabled = false
     }
     
     
