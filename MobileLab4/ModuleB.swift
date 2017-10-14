@@ -23,7 +23,7 @@ class ModuleB: UIViewController {
     var detector:CIDetector! = nil
     let bridge = ModBBridge()
     var arrayMag = Array(repeating: Float(0), count: Int(buffersize/2))
-    var dataBuffer = Buffer(with: chartDuration)
+    var dataBuffer = Buffer(with: 1000)
     var frame = 0
     var flashEnabled = false
     let fft = FFTHelper(fftSize: 2048, andWindow: WindowTypeHamming)
@@ -121,6 +121,8 @@ class ModuleB: UIViewController {
                         DispatchQueue.main.async {
                             self.bpmLabel.text = String(Int(peak1.frequency))+" BPM"
                         }
+                    }else{
+                        
                     }
                     
                    // print(arrayMag.max())
@@ -174,11 +176,17 @@ class ModuleB: UIViewController {
         
         var lineChartEntry = [ChartDataEntry]()
         let data = self.dataBuffer.getData()
-        for i in 0..<data.count{
-            let value = ChartDataEntry(x: Double(i), y: Double(data[i]))
-            lineChartEntry.append(value)
+        if data.count <= 300{
+            for i in 0..<data.count{
+                let value = ChartDataEntry(x: Double(i), y: Double(data[i]))
+                lineChartEntry.append(value)
+            }
+        }else{
+            for i in (data.count-300)..<data.count{
+                let value = ChartDataEntry(x: Double(i), y: Double(data[i]))
+                lineChartEntry.append(value)
+            }
         }
-        
         let line1 = LineChartDataSet(values: lineChartEntry, label: nil)
         line1.colors = [NSUIColor.red]
         line1.drawCirclesEnabled = false
